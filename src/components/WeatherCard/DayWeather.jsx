@@ -1,10 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { DayCard, Divider, ConditionsSection, ConditionLabel } from './DayCard.style';
+import { DayCard, Divider, ConditionsSection, ConditionLabel } from './DayWeather.style';
 
 const DayWeather = ({ infoCity }) => {
-  const { applicable_date, weather_state_abbr, the_temp, min_temp, max_temp, wind_speed, wind_direction_compass, predictability } = infoCity;
+  const {
+    applicable_date,
+    weather_state_abbr,
+    the_temp, min_temp,
+    max_temp, wind_speed,
+    wind_direction_compass,
+    predictability
+  } = infoCity;
+  
   var weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
   var d = new Date(applicable_date);
   var n = weekday[d.getDay()];

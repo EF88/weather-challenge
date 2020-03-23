@@ -1,36 +1,29 @@
-import userReducer from '../reducer';
-import { UserTypes } from '../types';
+import cityReducer from '../reducer';
+import { CityTypes, CityState } from '../types';
 
-describe('User Reducer', () => {
-  it('user request', () => {
-    const mockAction = { action: UserTypes.USER_REQUEST };
-    const mockExpectRespnse = { users: [], userRequest: true, userSuccess: false, userFailure: false };
-    const reducerResponse = userReducer(mockAction);
 
-    expect(reducerResponse).toEqual(mockExpectRespnse);
+describe('City Reducer', () => {
+  it('city request', () => {
+    const mockAction = { type: CityTypes.CITY_REQUEST };
+    const mockExpectResponse = { city: [], cityRequest: true, citySuccess: false, cityFailure: false };
+    const reducerResponse = cityReducer(CityState, mockAction);
+
+    expect(reducerResponse).toEqual(mockExpectResponse);
   });
 
-  it('user request success', () => {
-    const mockAction = { action: UserTypes.USER_SUCCESS };
-    const mockExpectRespnse = { users: [], userRequest: false, userSuccess: true, userFailure: false };
-    const reducerResponse = userReducer(mockAction);
+  it('city request success', () => {
+    const mockAction = { type: CityTypes.CITY_SUCCESS };
+    const mockExpectResponse = { city: undefined, cityRequest: false, citySuccess: true, cityFailure: false };
+    const reducerResponse = cityReducer(CityState, mockAction);
 
-    expect(reducerResponse).toEqual(mockExpectRespnse);
+    expect(reducerResponse).toEqual(mockExpectResponse);
   });
 
-  it('user request success', () => {
-    const mockAction = { action: UserTypes.USER_SUCCESS };
-    const mockExpectRespnse = { users: [], userRequest: false, userSuccess: false, userFailure: true };
-    const reducerResponse = userReducer(mockAction);
+  it('city request failure', () => {
+    const mockAction = { type: CityTypes.CITY_FAILURE };
+    const mockExpectResponse = { city: [], cityRequest: true, citySuccess: false, cityFailure: true };
+    const reducerResponse = cityReducer(CityState, mockAction);
 
-    expect(reducerResponse).toEqual(mockExpectRespnse);
-  });
-
-  it('user request success', () => {
-    const mockAction = { action: UserTypes.USER_SUCCESS };
-    const mockExpectRespnse = { users: [], userRequest: false, userSuccess: false, userFailure: false };
-    const reducerResponse = userReducer(mockAction);
-
-    expect(reducerResponse).toEqual(mockExpectRespnse);
+    expect(reducerResponse).toEqual(mockExpectResponse);
   });
 });

@@ -2,13 +2,17 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { CityTypes } from '../store/cities/types';
-import DayWeather from '../components/DayCard/DayCard';
+import DayWeather from '../components/WeatherCard/DayWeather';
 import { WeatherSection, MenuCities, ButtonCities } from './MainPage.style';
 import Spinner from '../components/SpinnerLoading/spinner.style';
 
 const MainPage = () => {
   const dispatch = useDispatch();
-  const { city: {consolidated_weather: days=[]}, cityRequest, cityFailure } = useSelector(
+  const {
+    city: { consolidated_weather: days=[] },
+    cityRequest,
+    cityFailure
+  } = useSelector(
     state => state.cityState,
   );
   const menuButtons = [
@@ -53,7 +57,7 @@ const MainPage = () => {
     return (
       <WeatherSection>
         {days && days.length > 0 && !cityRequest
-         ? days.map( city => <DayWeather infoCity={city}/>)
+         ? days.map( city => <DayWeather key={city.id} infoCity={city}/>)
          : renderNoWeather()
          }
       </WeatherSection>
@@ -63,7 +67,7 @@ const MainPage = () => {
   return (
     <>
       <MenuCities>
-      { menuButtons.map(({name, code}) => <div><ButtonCities onClick={handleOnClick(code)}>{name}</ButtonCities></div>)}
+      { menuButtons.map(({name, code}) => <div key={code}><ButtonCities onClick={handleOnClick(code)}>{name}</ButtonCities></div>)}
       </MenuCities>
       {renderDays()}
     </>

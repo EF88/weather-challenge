@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DayWeather matches the snapshot 1`] = `"<div class=\\"sc-AxjAm DPHZE\\"><h4>Monday</h4><img src=\\"https://www.metaweather.com//static/img/weather/hc.svg\\" alt=\\"Smiley face\\" height=\\"42\\" width=\\"42\\"/><h1>20°</h1><hr class=\\"sc-AxirZ dmCkWA\\"/><div class=\\"sc-AxiKw hHZAiu\\"><div class=\\"sc-AxhCb hOiHna\\">min<div>10°</div></div><div class=\\"sc-AxhCb hOiHna\\">max<div>19°</div></div></div><div class=\\"sc-AxiKw hHZAiu\\"><div class=\\"sc-AxhCb hOiHna\\">wind speed<div>5°</div></div><div class=\\"sc-AxhCb hOiHna\\">wind dir<div>NE</div></div></div><hr class=\\"sc-AxirZ dmCkWA\\"/><h5>predictability</h5><h3>71%</h3></div>"`;
