@@ -4,6 +4,7 @@ export const DayCard = styled.div`
   display: flex;
   flex-direction: column;
   width: 200px;
+  height: 400px;
   margin: 10px;
   border: 2px solid black;
   border-radius: 25px;
@@ -13,13 +14,6 @@ export const DayCard = styled.div`
   transition: 0.5s;
   :hover {
     box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
-  }
-  .company-section {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
   }
 `;
 

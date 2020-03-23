@@ -1,14 +1,15 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { LondonTypes } from '../store/london/types';
+import { CityTypes } from '../store/cities/types';
 import DayWeather from '../components/DayCard/DayCard';
 import { WeatherSection, MenuCities, ButtonCities } from './MainPage.style';
+import Spinner from '../components/SpinnerLoading/spinner.style';
 
 const MainPage = () => {
   const dispatch = useDispatch();
-  const { london: {consolidated_weather: days=[]}, londonRequest, londonFailure } = useSelector(
-    state => state.londonState,
+  const { city: {consolidated_weather: days=[]}, cityRequest, cityFailure } = useSelector(
+    state => state.cityState,
   );
   const menuButtons = [
     {
@@ -31,22 +32,30 @@ const MainPage = () => {
 
   const handleOnClick = code => () => {
     dispatch({
-      type: LondonTypes.LONDON_REQUEST,
+      type: CityTypes.CITY_REQUEST,
       codeCity: code
     });
   }
 
   useEffect(() => {
     dispatch({
-      type: LondonTypes.LONDON_REQUEST,
+      type: CityTypes.CITY_REQUEST,
       codeCity: menuButtons[0].code
     });
   }, []);
 
+  const renderNoWeather = () => {
+    if (cityFailure) return <h1>Something went wrong to found the Weather</h1>;
+    else if (cityRequest) return <Spinner />;
+  };
+
   const renderDays = () => {
     return (
       <WeatherSection>
-        { days.map( city => <DayWeather infoCity={city}/>)}
+        {days && days.length > 0 && !cityRequest
+         ? days.map( city => <DayWeather infoCity={city}/>)
+         : renderNoWeather()
+         }
       </WeatherSection>
     );
   };

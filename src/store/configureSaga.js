@@ -1,7 +1,7 @@
 import { takeLatest, all } from 'redux-saga/effects';
-import { LondonTypes } from './london/types';
-import { londonRequestGenerator } from './london/saga';
+import { CityTypes } from './cities/types';
+import { cityRequestGenerator } from './cities/saga';
 
 export default function* watchSagas() {
-  return yield all([takeLatest(LondonTypes.LONDON_REQUEST, londonRequestGenerator)]);
+  return yield all([takeLatest(CityTypes.CITY_REQUEST, cityRequestGenerator)]);
 }
